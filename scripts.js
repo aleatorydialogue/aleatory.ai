@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     'backgrounds/12.png',
     'backgrounds/13.png',
     'backgrounds/14.png',
-    'backgrounds/15.png',
+    'backgrounds/15.png'
     // Add more image file names here
   ];
 
