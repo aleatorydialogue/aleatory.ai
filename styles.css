@@ -47,3 +47,13 @@ body {
   transform: scale(1.1);
 }
 
+.video-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 560px;
+  height: 315px;
+}
+
+}
+
