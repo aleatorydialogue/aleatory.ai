@@ -48,12 +48,4 @@ body {
   transition: transform 0.3s;
 }
 
-.video-container {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 315px;
-  height: 315px;
-}
-
 
