@@ -45,14 +45,16 @@ body {
 
 .links a:hover {
   transform: scale(1.1);
+  transition: transform 0.3s;
 }
 
 .video-container {
-  position: absolute;
+  position: fixed;
   top: 20px;
   right: 20px;
   width: 560px;
   height: 315px;
+  z-index: -1;
 }
 
 
