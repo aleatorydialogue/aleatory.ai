@@ -668,7 +668,7 @@ async function main() {
 		// "dino.splat",
 		// location.href,
 		params.get("url") || "dino.splat",
-		"https://github.com/aleatorydialogue/splat/blob/main/",
+		"https://aleatory.ai/",
 	);
 	const req = await fetch(url, {
 		mode: "cors", // no-cors, *cors, same-origin
