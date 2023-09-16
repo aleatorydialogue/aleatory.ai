@@ -658,18 +658,28 @@ let defaultViewMatrix = [
 let viewMatrix = defaultViewMatrix;
 
 async function main() {
-	let carousel = true;
-	const params = new URLSearchParams(location.search);
-	try {
-		viewMatrix = JSON.parse(decodeURIComponent(location.hash.slice(1)));
-		carousel = false;
-	} catch (err) {}
-	const url = new URL(
-		// "dino.splat",
-		// location.href,
-		params.get("url") || "dino.splat",
-		"https://aleatory.ai/",
-	);
+    let carousel = true;
+    const params = new URLSearchParams(location.search);
+    try {
+        viewMatrix = JSON.parse(decodeURIComponent(location.hash.slice(1)));
+        carousel = false;
+    } catch (err) {}
+    
+    // List of available models
+    	const modelNames = ["dino.splat", "canterbury.splat", "bliss.splat"];
+    
+    // Randomly select a model
+    	const randomIndex = Math.floor(Math.random() * modelNames.length);
+    	const randomModel = modelNames[randomIndex];
+    
+    	const baseUrl = "https://huggingface.co/aleatorydialogue/trained_splats/resolve/main";
+	// Cache-busting query parameter
+    	const cacheBuster = new Date().getTime();  // Using current timestamp
+
+    // Initialize viewer with the randomly selected model
+    	const url = (params.get("url") || `${baseUrl}/${randomModel}`) + `?v=${cacheBuster}`;
+
+
 	const req = await fetch(url, {
 		mode: "cors", // no-cors, *cors, same-origin
 		credentials: "omit", // include, *same-origin, omit
