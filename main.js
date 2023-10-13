@@ -666,7 +666,7 @@ async function main() {
     } catch (err) {}
     
     // List of available models
-    	const modelNames = ["dino.splat", "canterbury.splat", "bliss.splat", "stream2.splat", "market.splat", "marsh.splat", "money.splat", "lighthouse.splat", "stairs.splat", "deck.splat"];
+    	const modelNames = ["dino.splat", "canterbury.splat", "bliss.splat", "stream2.splat", "market.splat", "marsh.splat", "driftwood.splat", "posts.splat", "shed.splat", "money.splat", "lighthouse.splat", "stairs.splat", "deck.splat"];
     
     // Randomly select a model
     	const randomIndex = Math.floor(Math.random() * modelNames.length);
