@@ -100,6 +100,13 @@ document.addEventListener('DOMContentLoaded', function () {
     'backgrounds/98.png',
     'backgrounds/99.png',
     'backgrounds/100.png',
+    'backgrounds/101.png',
+    'backgrounds/102.png',
+    'backgrounds/103.png',
+    'backgrounds/104.png',
+    'backgrounds/105.png',
+    'backgrounds/106.png',
+    'backgrounds/107.png',
     // Add more image file names here
   ];
 
