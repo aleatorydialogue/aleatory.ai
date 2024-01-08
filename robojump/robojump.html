@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>robojump</title>
+    <style>body { margin: 0; }</style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.55.2/phaser.min.js"></script>
+</head>
+<body>
+<script>
+var config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 25 }, // Adjust gravity to match your game's feel
+            debug: false
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+};
+
+var game = new Phaser.Game(config);
+var robot; // The player's character
+var cursors; // Keyboard input
+var platforms; // Platforms group
+
+function preload() {
+    this.load.image('background', 'assets/background.png');
+    this.load.image('platform', 'assets/platform.png');
+    this.load.spritesheet('robot', 'assets/robot_spritesheet.png', { frameWidth: 58, frameHeight: 122 }); // Adjust based on your sprite sheet
+}
+
+function create() {
+    this.add.image(400, 300, 'background').setScale(2);
+
+    platforms = this.physics.add.staticGroup();
+    platforms.create(100, 568, 'platform').setScale(0.5).refreshBody(); // Ground platform
+    platforms.create(400, 400, 'platform').setScale(0.5).refreshBody(); // Air platform example
+    platforms.create(250, 720, 'platform').setScale(0.5).refreshBody(); // sky platform
+    
+
+        // Optionally, you can set the camera to only follow vertically
+
+
+    robot = this.physics.add.sprite(100, 450, 'robot');
+    robot.setBounce(0.2);
+    robot.setCollideWorldBounds(true);
+
+    
+    this.anims.create({
+        key: 'stand',
+        frames: [{ key: 'robot', frame: 1 }],
+        frameRate: 10
+    });
+    this.anims.create({
+        key: 'step',
+        frames: this.anims.generateFrameNumbers('robot', { start: 0, end: 1 }), // Assuming frames 1-2 are for stepping
+        frameRate: 5,
+        repeat: -1
+    });
+    this.anims.create({
+        key: 'jump',
+        frames: [{ key: 'robot', frame: 2 }], // Assuming frame 2 is for jumping
+        frameRate: 10
+    });
+
+    this.physics.add.collider(robot, platforms);
+
+    cursors = this.input.keyboard.createCursorKeys();
+}
+
+function update() {
+    // Debug: Log the robot's vertical velocity and touching status
+    console.log('Velocity Y:', robot.body.velocity.y, 'Touching Down:', robot.body.touching.down);
+
+    // Handle horizontal movement
+    if (cursors.left.isDown) {
+        robot.setVelocityX(-160);
+        robot.anims.play('step', true);
+    } else if (cursors.right.isDown) {
+        robot.setVelocityX(160);
+        robot.anims.play('step', true);
+    } else {
+        robot.setVelocityX(0);
+        // Play 'stand' animation only if the robot is on the ground
+        if (robot.body.touching.down) {
+            robot.anims.play('stand', true);
+        }
+    }
+    
+    // Handle jumping
+    // Check if the up cursor key is pressed and the robot is on the ground
+    if (cursors.up.isDown && robot.body.touching.down) {
+        robot.setVelocityY(-500); // Apply a negative velocity to move up
+        robot.anims.play('jump', true); // Play jump animation
+    }
+}
+</script>
+</body>
+</html>
+
