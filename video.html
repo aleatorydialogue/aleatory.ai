@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Video Display</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+
+    <script>
+        // List of video URLs
+        const videos = [
+            "https://www.youtube.com/embed/dwZ8BPTvCzc",
+	    "https://www.youtube.com/embed/eC-q0Hg_dRE",
+	    "https://www.youtube.com/embed/f6a_9p5BZRk",
+            "https://www.youtube.com/embed/h79aPJhFEl8",
+            "https://www.youtube.com/embed/kFGKXbFWq0E",
+            "https://www.youtube.com/embed/qD6iLeIrKxY",
+            "https://www.youtube.com/embed/uTNx3vqllAI",
+            "https://www.youtube.com/embed/LzsuJQI7lsY",
+            "https://www.youtube.com/embed/MpmoheOUa5E",
+            "https://www.youtube.com/embed/NJ-g6OWt-uw",
+            "https://www.youtube.com/embed/Qd1gvAYpuss",
+            "https://www.youtube.com/embed/Ra-WnfsoOqs",
+            "https://www.youtube.com/embed/TKLtCYj8Gew",
+            "https://www.youtube.com/embed/TdqCdz7BhcU",
+            "https://www.youtube.com/embed/W-9ZVtEbJ6Y",
+            "https://www.youtube.com/embed/axjX5ndMGn0",
+            "https://www.youtube.com/embed/1UcndD56Q7U",
+            "https://www.youtube.com/embed/71syhCA2FLk",
+            "https://www.youtube.com/embed/7G82SMVSGnk",
+            "https://www.youtube.com/embed/8fzSs92-IJw",
+            "https://www.youtube.com/embed/9sAMi5Ms4To",
+            "https://www.youtube.com/embed/A7vGe8DeuIU",
+            "https://www.youtube.com/embed/CrnaHE3uZ0M",
+            "https://www.youtube.com/embed/GdstODX8B_0",
+            "https://www.youtube.com/embed/HppVkGTl1-Q",
+            "https://www.youtube.com/embed/JvIKluzOukw",
+            "https://www.youtube.com/embed/fsKgelTKc08",
+            "https://www.youtube.com/embed/h3wCs3Yn-9A",
+            "https://www.youtube.com/embed/nyB-6Or9j7s",
+            "https://www.youtube.com/embed/q2eCFNXV87s",
+            "https://www.youtube.com/embed/rNLLthMXh94",
+            "https://www.youtube.com/embed/t2xYbXm60Jg",
+            "https://www.youtube.com/embed/uEEd6je5FBY",
+            "https://www.youtube.com/embed/vhq8y2bv4LA",
+            "https://www.youtube.com/embed/wV0NDsqJ5pw",
+            "https://www.youtube.com/embed/-wYaIhmqKJ0",
+            "https://www.youtube.com/embed/HaAAmQfJAck",
+            "https://www.youtube.com/embed/IC0AzwzWPxU",
+            "https://www.youtube.com/embed/IDqX1SoYMWo",
+            "https://www.youtube.com/embed/MUjYfDEEO9A",
+            "https://www.youtube.com/embed/OjpEcxcOLRQ",
+            "https://www.youtube.com/embed/P4Qkxx_zfLA",
+            "https://www.youtube.com/embed/PbTcZk6WjVA",
+            "https://www.youtube.com/embed/XEbVL1BdP4E",
+            "https://www.youtube.com/embed/_MGEw0B7Jms",
+            "https://www.youtube.com/embed/fNu6-NN0Kic",
+            "https://www.youtube.com/embed/19M9Cyq2www",
+            "https://www.youtube.com/embed/26RMo3UcrIY",
+            "https://www.youtube.com/embed/9fN2DHNmdqM",
+            "https://www.youtube.com/embed/Ah1nr0C6fUU",
+            "https://www.youtube.com/embed/Azc9UZJEttw",
+            "https://www.youtube.com/embed/B9C79NIrCo4",
+            "https://www.youtube.com/embed/Bc5gM-lto_c",
+            "https://www.youtube.com/embed/Du7VUp0aa_w",
+            "https://www.youtube.com/embed/EXNq0oHfW08",
+            "https://www.youtube.com/embed/GfIlAZ5SxNY",
+            "https://www.youtube.com/embed/lj3jaGWB1pU",
+            "https://www.youtube.com/embed/nSQpguDX7Mw",
+            "https://www.youtube.com/embed/nxkRvciL0q0",
+            "https://www.youtube.com/embed/rh8OW4LYF0o",
+            "https://www.youtube.com/embed/teLx3_x2lxc",
+            "https://www.youtube.com/embed/u87Gkw1ayK4",
+            "https://www.youtube.com/embed/wZNZo2v8GYE",
+            "https://www.youtube.com/embed/xO3NhSY6bqo",
+            "https://www.youtube.com/embed/yv4JSiX8PMg",
+            "https://www.youtube.com/embed/0YJv1UC0ne8",
+            "https://www.youtube.com/embed/HfUDlLMUz3E",
+            "https://www.youtube.com/embed/Jh7o9kfqhco",
+            "https://www.youtube.com/embed/Kb2WasNvJLc",
+            "https://www.youtube.com/embed/QhjAPwnKm8w",
+            "https://www.youtube.com/embed/TG_dVQksE3c",
+            "https://www.youtube.com/embed/UIKxkF4BGc8",
+            "https://www.youtube.com/embed/YxxACB3bgzk",
+            "https://www.youtube.com/embed/dNJcE5Fp1lU",
+            "https://www.youtube.com/embed/eb6IcghGRPE",
+            "https://www.youtube.com/embed/lE2M7V4wUpo",
+            "https://www.youtube.com/embed/-yHlq0BkXXs",
+            "https://www.youtube.com/embed/2lAEcF4OUKA",
+            "https://www.youtube.com/embed/4Xp6qQq0hT8",
+            "https://www.youtube.com/embed/6slwxHuvfcI",
+            "https://www.youtube.com/embed/8mt1uhScgmk",
+            "https://www.youtube.com/embed/8x6A3F0t79U",
+            "https://www.youtube.com/embed/9S3DIsMGEnQ",
+            "https://www.youtube.com/embed/9eO8JiitF5Q",
+            "https://www.youtube.com/embed/Bx1qTSMdI-Y",
+            "https://www.youtube.com/embed/EwBnY0980xw",
+            "https://www.youtube.com/embed/jDetG369eOo",
+            "https://www.youtube.com/embed/k0kyd14ijZo",
+            "https://www.youtube.com/embed/keAeBoUN6Uc",
+            "https://www.youtube.com/embed/lGlIURykzk4",
+            "https://www.youtube.com/embed/pdOJhAQlm1w",
+            "https://www.youtube.com/embed/s0VKOz3YBmI",
+            "https://www.youtube.com/embed/sJaxY6c1Pv8",
+            "https://www.youtube.com/embed/u2vn65tWvyw",
+            "https://www.youtube.com/embed/zKHxsX44jV8",
+            "https://www.youtube.com/embed/-Lndu6nbsF8",
+            "https://www.youtube.com/embed/LmvPcw93q8M",
+            "https://www.youtube.com/embed/PGI8G7xv35Q",
+            "https://www.youtube.com/embed/SIDVyN5HMrI",
+            "https://www.youtube.com/embed/TM2vhUnLjGs",
+            "https://www.youtube.com/embed/XjeFocJnPE8",
+            "https://www.youtube.com/embed/aQTlWnynPyQ",
+            "https://www.youtube.com/embed/cBOlm5gr_aU",
+            "https://www.youtube.com/embed/ha4F0LWNagM",
+            "https://www.youtube.com/embed/iQmalMoKc9I",
+            "https://www.youtube.com/embed/iwRxiKcX5b4",
+            "https://www.youtube.com/embed/1X9nUHPeRK8",
+            "https://www.youtube.com/embed/6TZRWErkZc0",
+            "https://www.youtube.com/embed/6kA246zN00E",
+            "https://www.youtube.com/embed/7Le_lwFkUL8",
+            "https://www.youtube.com/embed/7MbyZRQufnQ",
+            "https://www.youtube.com/embed/9QtgcNfXsFY",
+            "https://www.youtube.com/embed/EufMSSRIJ1Q",
+            "https://www.youtube.com/embed/F4oYMkRDyP0",
+            "https://www.youtube.com/embed/JGHV2hofraE",
+            "https://www.youtube.com/embed/LIp2QJlWe-o"
+        ];
+
+        // Function to select a random video
+        function getRandomVideo() {
+            return videos[Math.floor(Math.random() * videos.length)];
+        }
+
+        // Setting the src of the iframe to a random video
+        document.getElementById('videoFrame').src = getRandomVideo();
+    </script>
+</body>
+</html>
+
+
