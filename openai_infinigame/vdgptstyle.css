@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("back.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh; /* Ensure body covers the viewport height */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+}
+
+.fixedhead {
+    background-color: rgba(255, 255, 255, 0.8); /* Example background for visibility */
+    padding: 1rem 0; /* Add some padding */
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem; /* Add padding on the sides */
+}
+
+.userinput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: 0 4px 10px lightgrey;
+}
+
+.userinput input, .userinput button {
+    margin: 0 0.5rem; /* Add space between input and button */
+}
+
+.chathistory, #dalleImageContainer {
+    flex-grow: 1; /* Allow these sections to fill available space */
+    overflow-y: auto; /* Add scroll to chat history */
+    padding: 1rem;
+}
+
+#chat-container {
+    max-width: 850px; /* Adjust based on your preference */
+    margin: 0 auto; /* Centers the box */
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: Adds a semi-transparent background */
+    border-radius: 10px; /* Optional: Rounds the corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow */
+}
+.message, .user-message, .chatgpt-message {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.user-message {
+    background-color: #42adf5;
+    color: white;
+}
+
+.chatgpt-message {
+    background-color: #4281f5;
+    color: white;
+}
+
+footer {
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.typing-span {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 0.15em solid #000; /* The typewriter cursor */
+    animation: typing 3.5s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: black; }
+}
+
+#dalleImageContainer img {
+    max-width: 100%; /* Ensures the image is responsive and does not overflow its container */
+    height: auto; /* Maintains the aspect ratio */
+    display: block; /* Removes the inline nature of images */
+    margin: 0 auto; /* Centers the image */
+    border-radius: 10px; /* Optional: Rounds the corners of the image */
+}
+
+#dalleImageContainer {
+    max-width: 400px; /* Adjust based on your preference */
+    margin: 20px auto; /* Adds space above and below the container and centers it */
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5); /* Optional: Adds a semi-transparent background */
+    border-radius: 10px; /* Optional: Rounds the corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow */
+}

@@ -1,0 +1,105 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: url('assets/cell.png') no-repeat center center fixed; 
+    background-size: cover; /* Cover the entire page */
+}
+header {
+    background: #333;
+    background-color: #007BFF; /* Medium light blue */
+    padding: 40px 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+h2 {
+    font-family: 'Roboto', sans-serif; /* Custom font for headings */
+    font-weight: 700; /* Bold weight for headings */
+    color: #90EE90; /* Light green color for a bit of flair */
+    text-shadow: 1px 1px 2px #000; /* Subtle text shadow for depth */
+    margin-bottom: 20px; /* Spacing below headings */
+}
+
+section {
+    padding: 20px;
+    text-align: center;
+    color: #90EE90
+}
+#services, #portfolio, #testimonials {
+    margin-bottom: 40px;
+}
+#services #portfolio, #testimonials  {
+    background: rgba(0, 0, 0, 0.1); /* Subtle background for the section */
+    padding: 20px; /* Padding around the content */
+    border-radius: 10px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+.input-wrapper, #contact-form button {
+    display: block; /* Keep form elements as block level */
+    width: 100%; /* Use full width */
+}
+
+input, textarea {
+    width: calc(100% - 20px); /* Adjust width to account for padding, removing auto margin */
+    padding: 10px;
+    display: block; /* Ensures elements are block-level */
+}
+
+input:focus, textarea:focus {
+    border-color: #66afe9;
+    outline: none;
+}
+
+label {
+    display: block; /* Change label from absolute to block to prevent overlapping */
+    margin-bottom: 5px; /* Add some space between label and input */
+}
+
+.focus-border {
+    display: none; /* Optionally hide the focus border if it doesn't align well with left alignment */
+}
+
+button {
+    display: block;
+    width: auto; /* Adjust button width as needed */
+    padding: 10px; /* Adjust button padding as needed */
+}
+
+button:hover {
+    background-color: #66afe9;
+}
+
+footer {
+    background-color: #007BFF; /* Darker blue for visibility */
+    padding: 10px; /* Adjust padding to control inner space */
+    position: fixed; /* Keep the footer at the bottom */
+    bottom: 0;
+    right: 0;
+    width: 20%; /* Increase width to desired size */
+    max-width: 600px; /* Optional: set a max-width to ensure it doesn't get too wide on larger screens */
+    box-sizing: border-box; /* Ensure padding is included in the width calculation */
+}
+
+#contact-form {
+    max-width: 300px; /* Limit the width of the form for a tighter look */
+}
+
+#contact-form .input-wrapper, 
+#contact-form button {
+    margin-bottom: 0px; /* Reduce space between form elements */
+}
+
+input, textarea {
+    width: 100%; /* Full width within the max-width of the form */
+    padding: 8px; /* Slightly reduce padding */
+    margin-bottom: 0; /* Remove any additional bottom margin */
+}
+
+button {
+    padding: 8px 16px; /* Adjust button padding */
+    width: auto; /* Allow the button to shrink/grow as per content */
+}

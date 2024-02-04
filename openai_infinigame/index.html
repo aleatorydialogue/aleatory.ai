@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>aleatory.ai infinigame</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="infinigame" CONTENT=".">
+    <link rel="stylesheet" href="vdgptstyle.css">    
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="fixedhead">
+        <nav>
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <h1 class="paddedheader">aleatory.ai infinigame</h1>
+                <span class="typing-span">improvised text-based adventure game... powered by openai</span>
+            </div>
+        </nav>
+    </div>
+    <div id="dalleImageContainer">
+        <!-- DALL-E generated image will be displayed here -->
+    </div>
+    <div id="chat-container">
+        <!-- Chat dialogue area -->
+    </div>
+    <section class="chathistory">
+        <div id="chat-history-container"></div> <!-- Renamed ID for uniqueness -->
+    </section>
+    <section class="userinput">        
+        <input type="text" id="user-input" placeholder="Take action..." onkeydown="verifyEnter(event)" />
+        <button onclick="sendMessage()">Send</button>
+    </section>
+    <footer>
+        Courtesy of: <a href="http://www.vivacitydesign.net" target="_blank">Vivacity Design</a>, June, 2023
+    </footer>
+    <script>
+        function verifyEnter(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault(); // Prevent the default form behavior
+                sendMessage();
+            }
+        }
+    </script>
+</body>
+</html>
+
