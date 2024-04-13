@@ -657,6 +657,20 @@ let defaultViewMatrix = [
 ];
 let viewMatrix = defaultViewMatrix;
 
+async function fetchWithRetry(url, retries = 3, backoff = 300) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Fetch failed, retrying...');
+        return response;
+    } catch (error) {
+        if (retries > 1) {
+            await new Promise(resolve => setTimeout(resolve, backoff));
+            return fetchWithRetry(url, retries - 1, backoff * 2);
+        } else throw new Error('Fetch failed with no retries left');
+    }
+}
+
+
 async function main() {
     let carousel = true;
     const params = new URLSearchParams(location.search);
@@ -666,7 +680,7 @@ async function main() {
     } catch (err) {}
     
     // List of available models
-    	const modelNames = ["dino.splat", "canterbury.splat", "bliss.splat", "stream2.splat", "market.splat", "marsh.splat", "driftwood.splat", "posts.splat", "shed.splat", "money.splat", "lighthouse.splat", "stairs.splat", "deck.splat", "tree1.splat", "tree2.splat", "riteaid.splat", "francis.splat", "cabin.splat", "garage.splat", "reindeer.splat", "winery.splat", "astronaut.splat", "easter.splat", "snowman.splat"];
+    	const modelNames = ["dino.splat", "canterbury.splat", "bliss.splat", "stream2.splat", "market.splat", "marsh.splat", "driftwood.splat", "posts.splat", "shed.splat", "money.splat", "lighthouse.splat", "stairs.splat", "deck.splat", "tree1.splat", "tree2.splat", "riteaid.splat", "francis.splat", "cabin.splat", "garage.splat", "reindeer.splat", "winery.splat", "astronaut.splat", "pen.splat", "main_fossil.splat", "easter.splat", "snowman.splat", "underwater_world.splat"];
     
     // Randomly select a model
     	const randomIndex = Math.floor(Math.random() * modelNames.length);
@@ -680,7 +694,7 @@ async function main() {
     	const url = (params.get("url") || `${baseUrl}/${randomModel}`) + `?v=${cacheBuster}`;
 
 
-	const req = await fetch(url, {
+	const req = await fetchWithRetry(url, {
 		mode: "cors", // no-cors, *cors, same-origin
 		credentials: "omit", // include, *same-origin, omit
 	});
