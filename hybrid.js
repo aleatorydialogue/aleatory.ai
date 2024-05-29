@@ -1002,12 +1002,25 @@ async function main() {
     }
   };
 
-const url = params.get("url") ? new URL(params.get("url"), "https://huggingface.co/aleatorydialogue/dynamic_splats/resolve/main/") : "timer.splatv";
-const req = await fetch(url, { mode: "cors", credentials: "omit" });
-if (req.status != 200) throw new Error(req.status + " Unable to load " + req.url);
+// Define the base URL for the Hugging Face repository
+const baseUrl = "https://huggingface.co/aleatorydialogue/dynamic_splats/resolve/main/";
 
+// Check if a specific model is specified in the URL parameters
+const modelFile = params.get("url") ? params.get("url") : "timer.splatv"; // Default to 'timer.splatv' if no parameter
+
+// Combine the base URL with the specific model file
+const url = new URL(modelFile, baseUrl).toString();
+
+// Fetch the model file
+const req = await fetch(url, { mode: "cors", credentials: "omit" });
+if (req.status !== 200) {
+    throw new Error(req.status + " Unable to load " + req.url);
+}
+
+// Proceed with reading chunks
 await readChunks(req.body.getReader(), [{ size: 8, type: "magic" }], chunkHandler);
 
+}
 
 main().catch((err) => {
   document.getElementById("spinner").style.display = "none";
