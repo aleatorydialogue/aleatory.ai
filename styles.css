@@ -1,4 +1,5 @@
 /* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Turret+Road:wght@200;400;700&display=swap');
 
 body {
   font-family: Arial, sans-serif;
@@ -16,7 +17,11 @@ header {
 }
 
 .title {
-  font-size: 2em;
+  font-family: 'Turret Road', sans-serif;
+  font-size: 3em; /* Adjust size as needed */
+  color: white; /* Adjust color as needed */
+  text-align: center;
+  margin-top: 20px; /* Adjust margin as needed */
 }
 
 main.content {
@@ -71,7 +76,7 @@ footer {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(100, 100, 100, 0.85);
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -80,6 +85,7 @@ footer {
 
 .dropdown-content .submenu-link {
   position: relative;
+  display: inline-block
 }
 
 .dropdown-content .submenu-content {
