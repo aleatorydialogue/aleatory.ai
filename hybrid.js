@@ -1002,7 +1002,7 @@ async function main() {
     }
   };
 
-  const url = params.get("url") ? new URL(params.get("url"), "https://huggingface.co/aleatorydialogue/dynamic_splats/tree/main/") : "god.splatv";
+  const url = params.get("url") ? new URL(params.get("url"), "https://huggingface.co/aleatorydialogue/dynamic_splats/resolve/main/") : "timer.splatv";
   const req = await fetch(url, { mode: "cors", credentials: "omit" });
   if (req.status != 200) throw new Error(req.status + " Unable to load " + req.url);
 
