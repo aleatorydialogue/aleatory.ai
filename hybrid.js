@@ -1002,18 +1002,10 @@ async function main() {
     }
   };
 
-// List of available models
-const modelNames = ["timer.splatv", "guitar.splatv", "controller.splatv", "god.splatv", "controller_rgb.splatv", "timer_rgb.splatv"];
+  const url = params.get("url") ? new URL(params.get("url"), "https://huggingface.co/aleatorydialogue/dynamic_splats/tree/main/") : "god.splatv";
+  const req = await fetch(url, { mode: "cors", credentials: "omit" });
+  if (req.status != 200) throw new Error(req.status + " Unable to load " + req.url);
 
-// Randomly select a model
-const randomIndex = Math.floor(Math.random() * modelNames.length);
-const randomModel = modelNames[randomIndex];
-
-// Check if a URL parameter is provided, otherwise use the randomly selected model
-const url = params.get("url") ? new URL(params.get("url"), "https://huggingface.co/aleatorydialogue/dynamic_splats/resolve/main/") : new URL(randomModel, "https://huggingface.co/aleatorydialogue/dynamic_splats/resolve/main/");
-
-const req = await fetch(url, { mode: "no-cors", credentials: "omit" });
-if (req.status != 200) throw new Error(req.status + " Unable to load " + req.url);
   await readChunks(req.body.getReader(), [{ size: 8, type: "magic" }], chunkHandler);
 }
 
