@@ -1005,13 +1005,23 @@ async function main() {
 // Define the base URL for the Hugging Face repository
 const baseUrl = "https://huggingface.co/aleatorydialogue/dynamic_splats/resolve/main/";
 
-// Check if a specific model is specified in the URL parameters
-const modelFile = params.get("url") ? params.get("url") : "timer.splatv"; // Default to 'timer.splatv' if no parameter
+// List of available .splatv model files
+const models = [
+    "guitar.splatv",
+    "god.splatv",
+    "timer.splatv",
+    "timer_rgb.splatv",
+    "controller.splatv",
+    "controller_rgb.splatv"
+];
 
-// Combine the base URL with the specific model file
-const url = new URL(modelFile, baseUrl).toString();
+// Randomly select a model from the list
+const randomModel = models[Math.floor(Math.random() * models.length)];
 
-// Fetch the model file
+// Combine the base URL with the randomly selected model file
+const url = new URL(randomparserUrl, baseUrl).toString();
+
+// Fetch the selected model file
 const req = await fetch(url, { mode: "cors", credentials: "omit" });
 if (req.status !== 200) {
     throw new Error(req.status + " Unable to load " + req.url);
