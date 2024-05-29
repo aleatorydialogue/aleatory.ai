@@ -1019,7 +1019,7 @@ const models = [
 const randomModel = models[Math.floor(Math.random() * models.length)];
 
 // Combine the base URL with the randomly selected model file
-const url = new URL(randomparserUrl, baseUrl).toString();
+const url = new URL(randomModel, baseUrl).toString();
 
 // Fetch the selected model file
 const req = await fetch(url, { mode: "cors", credentials: "omit" });
