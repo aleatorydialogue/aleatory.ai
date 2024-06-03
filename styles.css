@@ -135,3 +135,24 @@ nav.social-links a {
   height: 60px;
   border-radius: 31%;
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .fixedhead nav {
+        flex-direction: column;
+    }
+    #dalleImageContainer img {
+        width: 100%; /* Make the image take the full width of its container */
+        height: auto; /* Maintain the aspect ratio */
+    }
+    .userinput input, .userizerinput button {
+        width: 100%;
+    }
+    .paddedheader, .typing-span {
+        text-align: center; /* Center the text for smaller screens */
+    }
+    .dropbtn, .social-icon {
+        width: 40px;
+        height: 40px; /* Adjust size for easier interaction on mobile */
+    }
+}

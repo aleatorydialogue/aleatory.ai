@@ -1007,12 +1007,12 @@ const baseUrl = "https://huggingface.co/aleatorydialogue/dynamic_splats/resolve/
 
 // List of available .splatv model files
 const models = [
-    "guitar.splatv",
     "god.splatv",
     "timer.splatv",
     "timer_rgb.splatv",
     "controller.splatv",
-    "controller_rgb.splatv"
+    "controller_rgb.splatv",
+    "guitar.splatv"
 ];
 
 // Randomly select a model from the list

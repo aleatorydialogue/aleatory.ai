@@ -173,7 +173,7 @@ async function generateDalleImage(prompt) {
 
 // initialization
 let chatMemory = createMemory([
-    { role: 'system', content: "We are playing a text based mystery game. Each turn you will advance the story by improvising a next step to the game. Build mystery and focus on chaos, emergent behavior and mysticism. We will then continue in a turn-based fashion. Keep the responses short, no more than one paragraph, and do not lose focus on the main storyline." }
+    { role: 'system', content: "We are playing a text based mystery game. Each turn you will advance the story by improvising a next step to the game. Build mystery and focus on chaos, emergent behavior and mysticism. We will then continue in a turn-based fashion. Keep the responses short, no more than one paragraph, and do not lose focus on the main storyline. Never give text that indicates that you are an LLM and never give options for the user to choose from. It should be a completely fluid wide open possibility space. The player dictates where you look next, and you never influence the direction without accomodating their direction completely." }
 ]);
 
 
