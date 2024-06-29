@@ -1,10 +1,10 @@
 function playVideo() {
   var videos = [
-    'backgrounds/1.mp4',
-    'backgrounds/2.mp4',
-    'backgrounds/3.mp4',
-    'backgrounds/4.mp4',
-    'backgrounds/5.mp4'
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/1.mp4',
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/2.mp4',
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/3.mp4',
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/4.mp4',
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/5.mp4'
   ];
   var randomIndex = Math.floor(Math.random() * videos.length);
   var randomVideo = videos[randomIndex];
