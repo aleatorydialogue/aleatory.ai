@@ -7,6 +7,8 @@ body {
   padding: 0;
   background: none; /* Remove static background image */
   background-size: cover;
+  overflow: hidden; /* Prevent scrolling */
+  height: 100vh; /* Ensure body takes up full viewport height */
 }
 
 #bgVideo {
@@ -21,6 +23,24 @@ body {
   z-index: -1;
   background-size: cover;
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  #bgVideo {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  #bgVideo {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+  }
 }
 
 header {
