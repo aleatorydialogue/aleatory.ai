@@ -11,7 +11,11 @@ function playVideo() {
     'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/9.mp4',
     'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/10.mp4',
     'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/11.mp4',
-    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/12.mp4'
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/12.mp4'.
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/13.mp4',
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/14.mp4',
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/15.mp4',
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/16.mp4'
   ];
   var randomIndex = Math.floor(Math.random() * videos.length);
   var randomVideo = videos[randomIndex];
