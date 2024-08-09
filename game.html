@@ -66,6 +66,7 @@
         let velocityY = 0;
         let rotation = 0;  // Variable to track the character's rotation
         let isGameOver = false;
+        let facingRight = true;  // Track which direction the character is facing
 
         // Load images
         const standingImage = new Image();
@@ -142,7 +143,11 @@
             // Switch to jump image and rotate when not on a platform
             if (!character.isOnPlatform) {
                 currentImage = jumpingImage;
-                rotation += 0.08;  // Continue rotating while in the air
+                if (facingRight) {
+                    rotation += 0.08;  // Rotate clockwise
+                } else {
+                    rotation -= 0.08;  // Rotate counterclockwise
+                }
             }
 
             // Move platforms down to simulate upward camera movement
@@ -185,10 +190,13 @@
                 ctx.drawImage(platformImage, platform.x, platform.y, platform.width, platform.height);
             });
 
-            // Draw character with rotation
+            // Draw character with rotation and inversion if necessary
             ctx.save();
             ctx.translate(character.x + character.width / 2, character.y + character.height / 2);
             ctx.rotate(rotation);
+            if (!facingRight) {
+                ctx.scale(-1, 1);  // Flip the character horizontally
+            }
             ctx.drawImage(currentImage, -character.width / 2, -character.height / 2, character.width, character.height);
             ctx.restore();
 
@@ -201,9 +209,15 @@
             }
             if (event.key === 'ArrowLeft') {
                 character.velocityX = -5;
+                if (character.isOnPlatform) {
+                    facingRight = false;  // Face left
+                }
             }
             if (event.key === 'ArrowRight') {
                 character.velocityX = 5;
+                if (character.isOnPlatform) {
+                    facingRight = true;  // Face right
+                }
             }
         });
 
