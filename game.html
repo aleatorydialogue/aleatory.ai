@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Low Gravity Platformer</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            overflow: hidden;
+        }
+        #gameContainer {
+            position: relative;
+            width: 800px;
+            height: 600px;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;  /* Ensure the canvas is on top of the video */
+        }
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 800px;
+            height: 600px;
+            object-fit: cover;
+            z-index: 0;  /* Ensure the video is behind the canvas */
+        }
+        #gameOver {
+            color: white;
+            font-size: 36px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <video id="backgroundVideo" autoplay loop muted>
+            <source src="background.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <div id="gameOver">Game Over</div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const gameOverText = document.getElementById('gameOver');
+        const video = document.getElementById('backgroundVideo');
+
+        const gravity = 0.065;  // Set gravity to your desired value
+        let velocityY = 0;
+        let rotation = 0;  // Variable to track the character's rotation
+        let isGameOver = false;
+
+        // Load images
+        const characterImage = new Image();
+        characterImage.src = 'bot.png';
+        const platformImage = new Image();
+        platformImage.src = 'platform.png';
+
+        // Double character size
+        const character = {
+            x: 400,
+            y: 100,  // Start near the top of the screen
+            width: 48,  // Double the original width (24px * 2)
+            height: 96,  // Double the original height (48px * 2)
+            isJumping: false,
+            isOnPlatform: false,  // Track if the character is on a platform
+            velocityX: 0  // Track horizontal movement
+        };
+
+        let platforms = Array.from({ length: 8 }, (_, i) => ({
+            x: getRandomX(),
+            y: canvas.height - i * 100,  // Spread out platforms vertically
+            width: 100,
+            height: 10,
+        }));
+
+        function getRandomX() {
+            return Math.random() * (canvas.width - 100);  // Ensure platforms stay within canvas width
+        }
+
+        function jump() {
+            if (!character.isJumping && character.isOnPlatform) {
+                velocityY = -6;  // Adjust jump strength
+                character.isJumping = true;
+                character.isOnPlatform = false;
+            }
+        }
+
+        function update() {
+            if (isGameOver) return;
+
+            velocityY += gravity;
+            character.y += velocityY;
+            character.x += character.velocityX;  // Apply horizontal movement
+
+            if (character.isJumping) {
+                rotation += 0.18;  // 40% slower than the original 0.3
+            }
+
+            // Check for landing on platforms
+            character.isOnPlatform = false;
+            platforms.forEach(platform => {
+                if (detectCollision(character, platform)) {
+                    velocityY = 1;  // Slight positive velocity to stick character to platform
+                    character.y = platform.y - character.height;
+                    character.isJumping = false;
+                    character.isOnPlatform = true;
+                    rotation = 0;  // Reset rotation when landing
+                }
+            });
+
+            // Move platforms down to simulate upward camera movement
+            platforms.forEach(platform => {
+                platform.y += 1;  // Move platforms down
+                if (platform.y > canvas.height) {
+                    platform.y = 0;  // Loop platforms back to the top
+                    platform.x = getRandomX();  // Randomize X position when respawning
+                }
+            });
+
+            // Check if the character falls off the bottom
+            if (character.y > canvas.height) {
+                isGameOver = true;
+                gameOverText.style.display = 'block';
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        function detectCollision(character, platform) {
+            // Basic AABB collision detection
+            if (character.x < platform.x + platform.width &&
+                character.x + character.width > platform.x &&
+                character.y + character.height > platform.y &&
+                character.y + character.height < platform.y + platform.height + Math.abs(velocityY)) {
+                return true;
+            }
+            return false;
+        }
+
+        function render() {
+            if (isGameOver) return;
+
+            // Clear the canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw platforms with the new platform image
+            platforms.forEach(platform => {
+                ctx.drawImage(platformImage, platform.x, platform.y, platform.width, platform.height);
+            });
+
+            // Draw character with rotation
+            ctx.save();
+            ctx.translate(character.x + character.width / 2, character.y + character.height / 2);
+            ctx.rotate(rotation);
+            ctx.drawImage(characterImage, -character.width / 2, -character.height / 2, character.width, character.height);
+            ctx.restore();
+
+            requestAnimationFrame(render);
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowUp') {
+                jump();
+            }
+            if (event.key === 'ArrowLeft') {
+                character.velocityX = -5;
+            }
+            if (event.key === 'ArrowRight') {
+                character.velocityX = 5;
+            }
+        });
+
+        document.addEventListener('keyup', function(event) {
+            if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+                character.velocityX = 0;
+            }
+        });
+
+        // Ensure images are loaded before starting the game loop
+        characterImage.onload = () => {
+            platformImage.onload = () => {
+                update();
+                render();
+            };
+        };
+    </script>
+</body>
+</html>
