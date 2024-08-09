@@ -62,23 +62,27 @@
         const gameOverText = document.getElementById('gameOver');
         const video = document.getElementById('backgroundVideo');
 
-        const gravity = 0.065;  // Set gravity to your desired value
+        const gravity = 0.05525;  // Slowed down by 15%
         let velocityY = 0;
         let rotation = 0;  // Variable to track the character's rotation
         let isGameOver = false;
 
         // Load images
-        const characterImage = new Image();
-        characterImage.src = 'bot.png';
+        const standingImage = new Image();
+        standingImage.src = 'bot.png';
+        const jumpingImage = new Image();
+        jumpingImage.src = 'jump.png';
+        let currentImage = standingImage;
+
         const platformImage = new Image();
         platformImage.src = 'platform.png';
 
-        // Double character size
+        // Increase character size by 15%
         const character = {
             x: 400,
             y: 100,  // Start near the top of the screen
-            width: 48,  // Double the original width (24px * 2)
-            height: 96,  // Double the original height (48px * 2)
+            width: 48 * 1.15,  // 15% larger than the doubled size
+            height: 96 * 1.15,  // 15% larger than the doubled size
             isJumping: false,
             isOnPlatform: false,  // Track if the character is on a platform
             velocityX: 0  // Track horizontal movement
@@ -91,15 +95,20 @@
             height: 10,
         }));
 
+        // Ensure first platform spawns directly under the bot
+        platforms[0].x = character.x - platforms[0].width / 2;
+        platforms[0].y = character.y + character.height + 10;  // Position just below the bot
+
         function getRandomX() {
             return Math.random() * (canvas.width - 100);  // Ensure platforms stay within canvas width
         }
 
         function jump() {
-            if (!character.isJumping && character.isOnPlatform) {
+            if (character.isOnPlatform) {
                 velocityY = -6;  // Adjust jump strength
                 character.isJumping = true;
                 character.isOnPlatform = false;
+                currentImage = jumpingImage;  // Switch to jumping image
             }
         }
 
@@ -110,11 +119,14 @@
             character.y += velocityY;
             character.x += character.velocityX;  // Apply horizontal movement
 
-            if (character.isJumping) {
-                rotation += 0.18;  // 40% slower than the original 0.3
+            // Prevent moving past the left and right walls
+            if (character.x < 0) {
+                character.x = 0;
+            }
+            if (character.x + character.width > canvas.width) {
+                character.x = canvas.width - character.width;
             }
 
-            // Check for landing on platforms
             character.isOnPlatform = false;
             platforms.forEach(platform => {
                 if (detectCollision(character, platform)) {
@@ -123,8 +135,15 @@
                     character.isJumping = false;
                     character.isOnPlatform = true;
                     rotation = 0;  // Reset rotation when landing
+                    currentImage = standingImage;  // Switch back to standing image
                 }
             });
+
+            // Switch to jump image and rotate when not on a platform
+            if (!character.isOnPlatform) {
+                currentImage = jumpingImage;
+                rotation += 0.08;  // Continue rotating while in the air
+            }
 
             // Move platforms down to simulate upward camera movement
             platforms.forEach(platform => {
@@ -170,7 +189,7 @@
             ctx.save();
             ctx.translate(character.x + character.width / 2, character.y + character.height / 2);
             ctx.rotate(rotation);
-            ctx.drawImage(characterImage, -character.width / 2, -character.height / 2, character.width, character.height);
+            ctx.drawImage(currentImage, -character.width / 2, -character.height / 2, character.width, character.height);
             ctx.restore();
 
             requestAnimationFrame(render);
@@ -195,10 +214,12 @@
         });
 
         // Ensure images are loaded before starting the game loop
-        characterImage.onload = () => {
-            platformImage.onload = () => {
-                update();
-                render();
+        standingImage.onload = () => {
+            jumpingImage.onload = () => {
+                platformImage.onload = () => {
+                    update();
+                    render();
+                };
             };
         };
     </script>
