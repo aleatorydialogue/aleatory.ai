@@ -15,7 +15,18 @@ function playVideo() {
     'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/13.mp4',
     'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/14.mp4',
     'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/15.mp4',
-    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/16.mp4'
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/16.mp4',
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/17.mp4',
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/18.mp4',
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/19.mp4',
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/20.mp4',
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/21.mp4',
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/22.mp4',
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/23.mp4',
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/24.mp4',
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/25.mp4',
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/26.mp4',
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/27.mp4'
   ];
   var randomIndex = Math.floor(Math.random() * videos.length);
   var randomVideo = videos[randomIndex];
