@@ -1,6 +1,6 @@
 function playVideo() {
   var videos = [
-    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/Ir_01619.mp4'
+    'https://huggingface.co/aleatorydialogue/ad_backgrounds/resolve/main/lr_01619.mp4'
   ];
   var randomIndex = Math.floor(Math.random() * videos.length);
   var randomVideo = videos[randomIndex];
