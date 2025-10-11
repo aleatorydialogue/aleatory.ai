@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aleatory.ai — AI Consulting for Film, Creative & Enterprise</title>
+  <meta name="description" content="AI consulting for filmmakers, creative teams, and businesses. Dynamic Gaussian splats, NeRFs, diffusion video, local LLMs, and accelerated CUDA/PyTorch workflows—delivered in clear, business outcomes." />
+  <meta name="author" content="Aleatory.ai" />
+  <meta property="og:title" content="Aleatory.ai — AI Consulting" />
+  <meta property="og:description" content="From idea to on‑screen: splats, NeRFs, diffusion, and AI automation translated into results for non‑technical teams." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.aleatory.ai/" />
+  <meta property="og:image" content="https://www.aleatory.ai/og-image.jpg" />
+  <link rel="icon" href="/favicon.ico" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Accent gradients & small polish */
+    .bg-grid {
+      background-image: linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .glass { backdrop-filter: blur(10px); }
+    .shadow-soft { box-shadow: 0 10px 30px rgba(2, 6, 23, .1), 0 2px 6px rgba(2, 6, 23, .06); }
+  </style>
+  <script>
+    // Simple mobile menu toggle
+    function toggleNav() {
+      const m = document.getElementById('mobileMenu');
+      m.classList.toggle('hidden');
+    }
+    // Basic form handler (placeholder)
+    function handleContact(e){
+      e.preventDefault();
+      const f = new FormData(e.target);
+      const data = Object.fromEntries(f.entries());
+      const mailto = `mailto:hello@aleatory.ai?subject=Consulting%20Inquiry%20—%20${encodeURIComponent(data.name)}&body=${encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company}\nUse case: ${data.usecase}\nBudget: ${data.budget}\nMessage:\n${data.message}`)}`;
+      window.location.href = mailto;
+    }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Aleatory.ai Consulting",
+    "url": "https://www.aleatory.ai",
+    "description": "AI consulting specializing in dynamic Gaussian splats, NeRFs, diffusion video, local LLMs, and CUDA/PyTorch acceleration for film, creative, and enterprise teams.",
+    "areaServed": "Global",
+    "priceRange": "$$$",
+    "sameAs": [
+      "https://www.youtube.com/@AleatoryAir",
+      "https://www.linkedin.com/"
+    ]
+  }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-100 selection:bg-indigo-300 selection:text-slate-900">
+  <!-- Top Notice -->
+  <div class="w-full bg-gradient-to-r from-indigo-500/20 via-fuchsia-500/20 to-cyan-500/20 text-center text-xs md:text-sm py-2">Now booking Q4 projects — film & creative pipelines, R&D sprints, and enterprise prototypes.</div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-slate-950/80 glass border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+        <a href="#" class="flex items-center gap-2">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="text-indigo-400">
+            <path d="M12 2l3.5 6.5L22 9l-5 4.5L18 21l-6-3-6 3 1-7.5L2 9l6.5-.5L12 2z" stroke="currentColor" stroke-width="1.25"/>
+          </svg>
+          <span class="font-semibold tracking-tight">Aleatory.ai</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8 text-sm">
+          <a href="#services" class="hover:text-white/90">Services</a>
+          <a href="#work" class="hover:text-white/90">Work</a>
+          <a href="#process" class="hover:text-white/90">Process</a>
+          <a href="#pricing" class="hover:text-white/90">Pricing</a>
+          <a href="#faq" class="hover:text-white/90">FAQ</a>
+        </nav>
+        <div class="hidden md:flex items-center gap-3">
+          <a href="#contact" class="px-4 py-2 rounded-xl bg-white text-slate-900 font-medium hover:opacity-90 shadow-soft">Book a consult</a>
+        </div>
+        <button class="md:hidden inline-flex items-center p-2 rounded-lg border border-white/10" aria-label="Toggle Menu" onclick="toggleNav()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+      <div id="mobileMenu" class="md:hidden hidden py-3 border-t border-white/5">
+        <div class="flex flex-col gap-2 text-sm">
+          <a href="#services" class="py-2">Services</a>
+          <a href="#work" class="py-2">Work</a>
+          <a href="#process" class="py-2">Process</a>
+          <a href="#pricing" class="py-2">Pricing</a>
+          <a href="#faq" class="py-2">FAQ</a>
+          <a href="#contact" class="mt-2 px-4 py-2 rounded-xl bg-white text-slate-900 font-medium text-center">Book a consult</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid opacity-30 pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-semibold leading-tight tracking-tight">
+            AI Results for <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-300">Non‑Technical Teams</span>
+          </h1>
+          <p class="mt-5 text-white/80 text-lg max-w-xl">I help filmmakers, creative studios, and founders turn AI buzzwords into deliverables: dynamic Gaussian splats and NeRF shots, diffusion video assets, and private local LLM tools—without the engineering headache.</p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#contact" class="px-5 py-3 rounded-xl bg-white text-slate-900 font-medium shadow-soft">Start a project</a>
+            <a href="#work" class="px-5 py-3 rounded-xl border border-white/10 hover:bg-white/5">See work & case study</a>
+          </div>
+          <div class="mt-6 text-xs text-white/60">Trusted for CUDA/PyTorch acceleration · On‑prem & cloud · Clear milestones & pricing</div>
+        </div>
+        <div class="relative">
+          <div class="rounded-2xl border border-white/10 p-1 bg-gradient-to-br from-white/10 to-white/5 shadow-soft">
+            <div class="rounded-xl bg-slate-900/70 p-6">
+              <div class="grid grid-cols-2 gap-4 text-sm">
+                <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                  <div class="text-white/70">Dynamic Splats</div>
+                  <div class="text-2xl font-semibold">Film‑Ready Shots</div>
+                </div>
+                <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                  <div class="text-white/70">Diffusion Video</div>
+                  <div class="text-2xl font-semibold">Style‑Controlled</div>
+                </div>
+                <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                  <div class="text-white/70">Local LLM Tools</div>
+                  <div class="text-2xl font-semibold">Private & Fast</div>
+                </div>
+                <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                  <div class="text-white/70">Acceleration</div>
+                  <div class="text-2xl font-semibold">CUDA/PyTorch</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="mt-3 text-xs text-white/50">*Showreel placeholders — swap with images or short clips.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logos / Social Proof (placeholders) -->
+  <section class="py-8 border-y border-white/5 bg-slate-900/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center text-white/50 text-xs uppercase tracking-wider mb-4">Seen in / collaborated with</div>
+      <div class="grid grid-cols-2 md:grid-cols-6 gap-6 opacity-70">
+        <div class="h-10 bg-white/5 rounded"></div>
+        <div class="h-10 bg-white/5 rounded"></div>
+        <div class="h-10 bg-white/5 rounded"></div>
+        <div class="h-10 bg-white/5 rounded"></div>
+        <div class="h-10 bg-white/5 rounded"></div>
+        <div class="h-10 bg-white/5 rounded"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-10 items-start">
+        <div>
+          <h2 class="text-3xl font-semibold">What I Do</h2>
+          <p class="mt-3 text-white/80">Clear scopes, predictable timelines, and creative control. Pick a track below or mix‑and‑match.</p>
+        </div>
+        <div class="lg:col-span-2 grid md:grid-cols-2 gap-6">
+          <!-- Card 1 -->
+          <div class="p-6 rounded-2xl border border-white/10 bg-white/5">
+            <h3 class="text-xl font-semibold">Dynamic Gaussian Splats & NeRFs</h3>
+            <p class="mt-2 text-white/80 text-sm">Capture design, training, cleanup, and web playback for interactive shots or hero moments in film/ads/events.</p>
+            <ul class="mt-3 text-sm text-white/70 list-disc list-inside">
+              <li>Multi‑camera capture planning</li>
+              <li>Training & optimization (VRAM‑aware)</li>
+              <li>Interactive viewers (web/Unity/Unreal)</li>
+            </ul>
+          </div>
+          <!-- Card 2 -->
+          <div class="p-6 rounded-2xl border border-white/10 bg-white/5">
+            <h3 class="text-xl font-semibold">Diffusion Video & ComfyUI Pipelines</h3>
+            <p class="mt-2 text-white/80 text-sm">Concept art, style boards, and short motion clips that match your brand or director’s vision.</p>
+            <ul class="mt-3 text-sm text-white/70 list-disc list-inside">
+              <li>Look development & model selection</li>
+              <li>ControlNet, AnimateDiff, IP‑Adapter</li>
+              <li>Batch renders & upscaling</li>
+            </ul>
+          </div>
+          <!-- Card 3 -->
+          <div class="p-6 rounded-2xl border border-white/10 bg-white/5">
+            <h3 class="text-xl font-semibold">Local LLMs & Private AI Tools</h3>
+            <p class="mt-2 text-white/80 text-sm">Internal copilots that run on your machines for privacy, speed, and custom workflows.</p>
+            <ul class="mt-3 text-sm text-white/70 list-disc list-inside">
+              <li>Use‑case design & fine‑tuning</li>
+              <li>Document/asset automation</li>
+              <li>On‑prem or cloud deploys</li>
+            </ul>
+          </div>
+          <!-- Card 4 -->
+          <div class="p-6 rounded-2xl border border-white/10 bg-white/5">
+            <h3 class="text-xl font-semibold">CUDA/PyTorch Acceleration</h3>
+            <p class="mt-2 text-white/80 text-sm">Make your pipeline faster and cheaper: GPU setup, drivers, Torch/CUDA versions, and profiling.</p>
+            <ul class="mt-3 text-sm text-white/70 list-disc list-inside">
+              <li>Workstation & eGPU tuning</li>
+              <li>Cloud scaling strategies</li>
+              <li>Profiling & cost control</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Outcomes / Use Cases -->
+  <section class="py-16 bg-slate-900/30 border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-semibold text-center">Common Outcomes</h2>
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-2xl border border-white/10 bg-white/5">
+          <h4 class="font-semibold">Film & Music Video</h4>
+          <p class="mt-2 text-sm text-white/80">Audience‑grabbing splat shots, stylized diffusion plates, and seamless integration with your edit.</p>
+        </div>
+        <div class="p-6 rounded-2xl border border-white/10 bg-white/5">
+          <h4 class="font-semibold">Events & Experiences</h4>
+          <p class="mt-2 text-sm text-white/80">Interactive 3D captures for launches, exhibits, and venues—viewable in browser or installations.</p>
+        </div>
+        <div class="p-6 rounded-2xl border border-white/10 bg-white/5">
+          <h4 class="font-semibold">Enterprise Prototypes</h4>
+          <p class="mt-2 text-sm text-white/80">Private LLM tools and automation to remove drudge work and speed up teams—no data leaves your control.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Study (Placeholder) -->
+  <section id="work" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h2 class="text-3xl font-semibold">Case Study: Dynamic Splat Shot for Film</h2>
+          <p class="mt-3 text-white/80">Designed a multi‑camera capture for a moving performance, trained a dynamic Gaussian splat, and delivered a web‑based interactive shot for the director to pre‑viz and approve—then rendered finals to integrate in the edit.</p>
+          <ul class="mt-4 text-sm text-white/70 list-disc list-inside">
+            <li>Capture plan & on‑set support</li>
+            <li>VRAM‑aware training & cleanup</li>
+            <li>Interactive review + final deliveries</li>
+          </ul>
+          <a href="#contact" class="mt-6 inline-block px-5 py-3 rounded-xl bg-white text-slate-900 font-medium shadow-soft">Plan your shot</a>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 aspect-video"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process" class="py-20 bg-slate-900/30 border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-semibold text-center">How We’ll Work</h2>
+      <div class="mt-10 grid md:grid-cols-4 gap-6">
+        <div class="p-6 rounded-2xl border border-white/10 bg-white/5">
+          <div class="text-xs text-white/60">Step 1</div>
+          <h4 class="font-semibold">Discovery</h4>
+          <p class="mt-2 text-sm text-white/80">30–45 min call to lock goals, constraints, and timeline. You bring references; I translate to milestones.</p>
+        </div>
+        <div class="p-6 rounded-2xl border border-white/10 bg-white/5">
+          <div class="text-xs text-white/60">Step 2</div>
+          <h4 class="font-semibold">Scope & Quote</h4>
+          <p class="mt-2 text-sm text-white/80">Fixed‑fee or sprint pricing with clear deliverables. No jargon, no ambiguity.</p>
+        </div>
+        <div class="p-6 rounded-2xl border border-white/10 bg-white/5">
+          <div class="text-xs text-white/60">Step 3</div>
+          <h4 class="font-semibold">Build</h4>
+          <p class="mt-2 text-sm text-white/80">I prototype fast, share previews, and keep versions labeled. You approve each phase.</p>
+        </div>
+        <div class="p-6 rounded-2xl border border-white/10 bg-white/5">
+          <div class="text-xs text-white/60">Step 4</div>
+          <h4 class="font-semibold">Deliver</h4>
+          <p class="mt-2 text-sm text-white/80">Final files, hand‑off docs, and (if needed) a short training session for your team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-semibold text-center">Engagement Options</h2>
+      <p class="mt-3 text-center text-white/80 max-w-2xl mx-auto">Pick what fits your timeline and risk. All options include weekly progress updates and source assets.</p>
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-2xl border border-white/10 bg-white/5 flex flex-col">
+          <h3 class="text-xl font-semibold">Strategy Sprint</h3>
+          <p class="mt-2 text-sm text-white/80">1–2 weeks to map your AI opportunity, tech choices, and a realistic plan.</p>
+          <ul class="mt-3 text-sm text-white/70 list-disc list-inside flex-1">
+            <li>Roadmap & budget ranges</li>
+            <li>Risk & feasibility notes</li>
+            <li>Recommended stack</li>
+          </ul>
+          <div class="mt-4 text-white/60 text-sm">From $1,500</div>
+        </div>
+        <div class="p-6 rounded-2xl border border-indigo-400/30 bg-gradient-to-b from-white/5 to-indigo-500/10 flex flex-col ring-1 ring-inset ring-indigo-400/30">
+          <div class="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-indigo-300"><span>Most Popular</span></div>
+          <h3 class="text-xl font-semibold">Prototype Build</h3>
+          <p class="mt-2 text-sm text-white/80">3–6 weeks to deliver a working demo: splat/NeRF shot, diffusion clip set, or private LLM tool.</p>
+          <ul class="mt-3 text-sm text-white/70 list-disc list-inside flex-1">
+            <li>Milestones & previews</li>
+            <li>Two revision rounds</li>
+            <li>Handoff docs</li>
+          </ul>
+          <div class="mt-4 text-white/60 text-sm">From $5,000</div>
+        </div>
+        <div class="p-6 rounded-2xl border border-white/10 bg-white/5 flex flex-col">
+          <h3 class="text-xl font-semibold">Production & Support</h3>
+          <p class="mt-2 text-sm text-white/80">Ongoing support to scale renders, optimize costs, and keep your pipeline humming.</p>
+          <ul class="mt-3 text-sm text-white/70 list-disc list-inside flex-1">
+            <li>Render & training ops</li>
+            <li>Pipeline acceleration</li>
+            <li>Priority support</li>
+          </ul>
+          <div class="mt-4 text-white/60 text-sm">Monthly retainers</div>
+        </div>
+      </div>
+      <div class="mt-8 text-center">
+        <a href="#contact" class="inline-block px-6 py-3 rounded-xl bg-white text-slate-900 font-medium shadow-soft">Get a quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack (jargon‑light) -->
+  <section class="py-16 bg-slate-900/30 border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-semibold text-center">Under the Hood (So You Don’t Have To Be)</h2>
+      <p class="mt-3 text-center text-white/80 max-w-3xl mx-auto">I use proven tools to get results—NeRFs & splats for 3D, diffusion for images/video, and private local language models for automation. Translation: your team gets outcomes without wrestling drivers, versions, or GPUs.</p>
+      <div class="mt-10 grid md:grid-cols-5 gap-4 text-sm text-white/70">
+        <div class="p-4 rounded-xl border border-white/10 bg-white/5">Dynamic Gaussian Splats</div>
+        <div class="p-4 rounded-xl border border-white/10 bg-white/5">NeRF families</div>
+        <div class="p-4 rounded-xl border border-white/10 bg-white/5">ComfyUI / AnimateDiff</div>
+        <div class="p-4 rounded-xl border border-white/10 bg-white/5">PyTorch / CUDA</div>
+        <div class="p-4 rounded-xl border border-white/10 bg-white/5">Local LLMs</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials (placeholders) -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-semibold text-center">What Clients Say</h2>
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <figure class="p-6 rounded-2xl border border-white/10 bg-white/5">
+          <blockquote class="text-white/80 text-sm">“Clear, fast, and the results looked incredible in our edit. We’ll be back.”</blockquote>
+          <figcaption class="mt-3 text-xs text-white/60">Producer, Music Video — NYC</figcaption>
+        </figure>
+        <figure class="p-6 rounded-2xl border border-white/10 bg-white/5">
+          <blockquote class="text-white/80 text-sm">“Translated our idea into a working prototype in weeks—not months.”</blockquote>
+          <figcaption class="mt-3 text-xs text-white/60">Creative Director, Studio</figcaption>
+        </figure>
+        <figure class="p-6 rounded-2xl border border-white/10 bg-white/5">
+          <blockquote class="text-white/80 text-sm">“No jargon, just deliverables. Loved the weekly previews.”</blockquote>
+          <figcaption class="mt-3 text-xs text-white/60">Founder, Startup</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-20 bg-slate-900/30 border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-semibold text-center">FAQs</h2>
+      <div class="mt-10 grid md:grid-cols-2 gap-6 text-sm">
+        <details class="p-5 rounded-xl border border-white/10 bg-white/5" open>
+          <summary class="font-semibold cursor-pointer">I’m not technical. Is that OK?</summary>
+          <p class="mt-2 text-white/80">Yes. My job is to translate your vision into a clear plan and deliverables. You approve milestones—no engineering required.</p>
+        </details>
+        <details class="p-5 rounded-xl border border-white/10 bg-white/5">
+          <summary class="font-semibold cursor-pointer">Can you work with our in‑house team?</summary>
+          <p class="mt-2 text-white/80">Absolutely. I can be a turnkey partner or embed with your crew to transfer know‑how as we go.</p>
+        </details>
+        <details class="p-5 rounded-xl border border-white/10 bg-white/5">
+          <summary class="font-semibold cursor-pointer">How do you price?</summary>
+          <p class="mt-2 text-white/80">Most projects use fixed‑fee phases (discovery → prototype → production). Retainers are available for ongoing pipelines.</p>
+        </details>
+        <details class="p-5 rounded-xl border border-white/10 bg-white/5">
+          <summary class="font-semibold cursor-pointer">Do you sign NDAs?</summary>
+          <p class="mt-2 text-white/80">Yes. Confidentiality and IP ownership terms are standard and can match your legal templates.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-8">
+        <h2 class="text-3xl font-semibold">Let’s Talk</h2>
+        <p class="mt-2 text-white/80 text-sm">Tell me about your project. I’ll reply with a short plan and a suggested first step.</p>
+        <form class="mt-6 grid md:grid-cols-2 gap-4" onsubmit="handleContact(event)">
+          <div class="md:col-span-1">
+            <label class="block text-xs text-white/70 mb-1">Name</label>
+            <input required name="name" type="text" class="w-full px-3 py-2 rounded-lg bg-slate-900/70 border border-white/10" placeholder="Your name"/>
+          </div>
+          <div class="md:col-span-1">
+            <label class="block text-xs text-white/70 mb-1">Email</label>
+            <input required name="email" type="email" class="w-full px-3 py-2 rounded-lg bg-slate-900/70 border border-white/10" placeholder="you@studio.com"/>
+          </div>
+          <div class="md:col-span-1">
+            <label class="block text-xs text-white/70 mb-1">Company</label>
+            <input name="company" type="text" class="w-full px-3 py-2 rounded-lg bg-slate-900/70 border border-white/10" placeholder="Studio / Brand"/>
+          </div>
+          <div class="md:col-span-1">
+            <label class="block text-xs text-white/70 mb-1">Ballpark Budget</label>
+            <select name="budget" class="w-full px-3 py-2 rounded-lg bg-slate-900/70 border border-white/10">
+              <option value="Undisclosed">Undisclosed</option>
+              <option>$1k–$5k</option>
+              <option>$5k–$15k</option>
+              <option>$15k–$50k</option>
+              <option>$50k+</option>
+            </select>
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-xs text-white/70 mb-1">What are you trying to achieve?</label>
+            <select name="usecase" class="w-full px-3 py-2 rounded-lg bg-slate-900/70 border border-white/10">
+              <option>Dynamic splat/NeRF shot</option>
+              <option>Diffusion video look dev</option>
+              <option>Private LLM tool</option>
+              <option>Pipeline acceleration</option>
+              <option>Other / not sure</option>
+            </select>
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-xs text-white/70 mb-1">Message</label>
+            <textarea required name="message" rows="5" class="w-full px-3 py-2 rounded-lg bg-slate-900/70 border border-white/10" placeholder="Timeline, references, goals…"></textarea>
+          </div>
+          <div class="md:col-span-2 flex flex-wrap gap-3 items-center">
+            <button type="submit" class="px-6 py-3 rounded-xl bg-white text-slate-900 font-medium shadow-soft">Send inquiry</button>
+            <a href="https://cal.com/" target="_blank" class="px-6 py-3 rounded-xl border border-white/10 hover:bg-white/5">Or book a call</a>
+          </div>
+          <p class="md:col-span-2 text-xs text-white/50 mt-2">By reaching out you agree to a reply via email. I don’t share or sell your data.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-8 text-sm">
+        <div>
+          <div class="flex items-center gap-2 font-semibold">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" class="text-indigo-400">
+              <path d="M12 2l3.5 6.5L22 9l-5 4.5L18 21l-6-3-6 3 1-7.5L2 9l6.5-.5L12 2z" stroke="currentColor" stroke-width="1.25"/>
+            </svg>
+            Aleatory.ai
+          </div>
+          <p class="mt-2 text-white/70">AI consulting for film, creative, and enterprise teams.</p>
+        </div>
+        <div>
+          <div class="font-semibold">Explore</div>
+          <ul class="mt-2 space-y-2 text-white/70">
+            <li><a href="#services" class="hover:text-white">Services</a></li>
+            <li><a href="#work" class="hover:text-white">Work</a></li>
+            <li><a href="#process" class="hover:text-white">Process</a></li>
+            <li><a href="#pricing" class="hover:text-white">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-semibold">Contact</div>
+          <ul class="mt-2 space-y-2 text-white/70">
+            <li><a href="mailto:hello@aleatory.ai" class="hover:text-white">hello@aleatory.ai</a></li>
+            <li><a href="#contact" class="hover:text-white">Inquiry form</a></li>
+            <li><a href="https://www.youtube.com/@AleatoryAir" target="_blank" class="hover:text-white">YouTube: Aleatory Air</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-semibold">Legal</div>
+          <ul class="mt-2 space-y-2 text-white/70">
+            <li><a href="#" class="hover:text-white">Consulting Agreement</a></li>
+            <li><a href="#" class="hover:text-white">Privacy</a></li>
+            <li><a href="#" class="hover:text-white">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8 text-xs text-white/50">© <span id="year"></span> Aleatory.ai. All rights reserved.</div>
+    </div>
+    <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+  </footer>
+</body>
+</html>
