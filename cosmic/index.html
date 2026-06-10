@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Aleatory.ai builds AI systems for creative work, spatial media, and human-directed automation." />
+  <title>Aleatory.ai — AI Systems for Creative Work</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="site-shell">
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <div class="stars" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Aleatory.ai home">ALEATORY.AI</a>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#consulting">Consulting</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="#consulting">Consulting</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <main id="top">
+      <section class="hero section-pad">
+        <div class="hero-copy">
+          <p class="eyebrow">Consulting & AI Systems</p>
+
+          <h1>AI systems for creative work, spatial media, and human-directed automation.</h1>
+
+          <p class="hero-subtitle">
+            I help artists, founders, and teams build AI workflows, tools, and media systems that extend human taste.
+          </p>
+
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="button button-primary" href="#contact">Work with me</a>
+            <a class="button button-secondary" href="#projects">Explore the lab</a>
+          </div>
+        </div>
+
+        <div class="signal-stage splat-stage">
+          <div class="splat-frame glass-card">
+            <iframe
+              src="./splat-viewer/index.html?content=./index.sog&noui"
+              title="Interactive Gaussian splat demo"
+              loading="eager"
+              allow="fullscreen; xr-spatial-tracking"
+              referrerpolicy="strict-origin-when-cross-origin"
+            ></iframe>
+
+            <div class="splat-caption" aria-hidden="true">
+              <span>Interactive spatial media demo</span>
+              <small>Drag to orbit · Scroll to zoom · Gaussian splat</small>
+            </div>
+          </div>
+
+          <p class="hero-quote">
+            <em>AI extends capability.<br />Human taste gives it direction.</em>
+          </p>
+        </div>
+      </section>
+
+      <section class="capabilities section-pad" aria-labelledby="capabilities-title">
+        <h2 id="capabilities-title" class="sr-only">Capabilities</h2>
+
+        <div class="capability-grid">
+          <article class="glass-card capability-card">
+            <div class="icon-box" aria-hidden="true">▷</div>
+            <h3>Generative Video</h3>
+            <p>Create, iterate, and direct AI-generated visuals.</p>
+          </article>
+
+          <article class="glass-card capability-card">
+            <div class="icon-box particle-icon" aria-hidden="true">✣</div>
+            <h3>Gaussian Splats</h3>
+            <p>3D capture and real-time reconstruction at scale.</p>
+          </article>
+
+          <article class="glass-card capability-card">
+            <div class="icon-box" aria-hidden="true">›_</div>
+            <h3>Local AI Tools</h3>
+            <p>Private, performant tools that run on your machine.</p>
+          </article>
+
+          <article class="glass-card capability-card">
+            <div class="icon-box" aria-hidden="true">⌬</div>
+            <h3>Automation</h3>
+            <p>Design intelligent workflows that compound value.</p>
+          </article>
+
+          <article class="glass-card capability-card">
+            <div class="icon-box" aria-hidden="true">⚗</div>
+            <h3>Experiments</h3>
+            <p>Explore new methods at the edge of creative AI.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="consulting" class="work section-pad" aria-labelledby="work-title">
+        <p class="eyebrow centered">Three ways to work together</p>
+
+        <div class="path-grid">
+          <a class="glass-card path-card" href="#contact">
+            <span class="path-icon">✣</span>
+
+            <span>
+              <h2>Consulting</h2>
+              <p>Custom AI workflows, implementation, and guidance.</p>
+              <small>Learn more →</small>
+            </span>
+
+            <strong aria-hidden="true">→</strong>
+          </a>
+
+          <a class="glass-card path-card" href="#projects">
+            <span class="path-icon">◇</span>
+
+            <span>
+              <h2>Spatial Media</h2>
+              <p>Gaussian splats, 3D capture, and immersive prototypes.</p>
+              <small>Learn more →</small>
+            </span>
+
+            <strong aria-hidden="true">→</strong>
+          </a>
+
+          <a class="glass-card path-card" href="#about">
+            <span class="path-icon">▱</span>
+
+            <span>
+              <h2>Systems Lab</h2>
+              <p>Experimental tools, creative automation, and autonomous media systems.</p>
+              <small>Learn more →</small>
+            </span>
+
+            <strong aria-hidden="true">→</strong>
+          </a>
+        </div>
+      </section>
+
+      <section id="about" class="philosophy section-pad">
+        <div class="glass-card principle-card">
+          <div class="principle-lead">
+            <span class="compass" aria-hidden="true">✧</span>
+            <h2>Building practical AI systems without automating away human taste.</h2>
+          </div>
+
+          <div class="principles">
+            <article>
+              <h3>Human-First</h3>
+              <p>Tools that amplify judgment, not replace it.</p>
+            </article>
+
+            <article>
+              <h3>Practical by Design</h3>
+              <p>Shipped systems, real use cases, measurable impact.</p>
+            </article>
+
+            <article>
+              <h3>Privacy & Control</h3>
+              <p>Local-first by default. Your data, your rules.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="projects section-pad" aria-labelledby="projects-title">
+        <div class="section-heading">
+          <p class="eyebrow">Selected lab directions</p>
+          <h2 id="projects-title">Experiments that can become infrastructure.</h2>
+        </div>
+
+        <div class="project-grid">
+          <article class="glass-card project-card">
+            <p>01</p>
+            <h3>Generative media pipelines</h3>
+            <span>Image-to-video, ComfyUI workflows, prompt systems, and controlled iteration.</span>
+          </article>
+
+          <article class="glass-card project-card">
+            <p>02</p>
+            <h3>Spatial reconstruction</h3>
+            <span>Gaussian splats, dynamic capture, immersive archives, and web viewers.</span>
+          </article>
+
+          <article class="glass-card project-card">
+            <p>03</p>
+            <h3>Local AI operations</h3>
+            <span>Private models, agent tools, search, automation, and GPU-aware deployment.</span>
+          </article>
+
+          <article class="glass-card project-card">
+            <p>04</p>
+            <h3>Holding the String</h3>
+            <span>Autonomous creative systems guided by human taste and direction.</span>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="contact section-pad">
+        <div class="contact-panel glass-card">
+          <p class="eyebrow">Start with a conversation</p>
+
+          <h2>Bring an idea, workflow, shot, prototype, or weird impossible thing.</h2>
+
+          <p>
+            I can help you clarify what is possible, choose the right tools, and build a working AI system without getting lost in the noise.
+          </p>
+
+          <a class="button button-primary" href="mailto:timtulloch11@gmail.com?subject=Aleatory.ai%20consulting%20inquiry">
+            Email Aleatory
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>CONSULTING · PROTOTYPES · CUSTOM SYSTEMS · LOCAL TOOLS · AUTOMATION · EXPERIMENTS</p>
+      <a href="#top">ALEATORY.AI</a>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

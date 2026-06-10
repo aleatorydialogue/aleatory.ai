@@ -1,0 +1,110 @@
+{
+    "version": 2,
+    "tonemapping": "none",
+    "highPrecisionRendering": false,
+    "background": {
+        "color": [
+            0,
+            0,
+            0
+        ]
+    },
+    "postEffectSettings": {
+        "sharpness": {
+            "enabled": false,
+            "amount": 0
+        },
+        "bloom": {
+            "enabled": false,
+            "intensity": 1,
+            "blurLevel": 2
+        },
+        "grading": {
+            "enabled": false,
+            "brightness": 1,
+            "contrast": 1,
+            "saturation": 1,
+            "tint": [
+                1,
+                1,
+                1
+            ]
+        },
+        "vignette": {
+            "enabled": false,
+            "intensity": 0.5,
+            "inner": 0.3,
+            "outer": 0.75,
+            "curvature": 1
+        },
+        "fringing": {
+            "enabled": false,
+            "intensity": 0.5
+        }
+    },
+    "animTracks": [
+        {
+            "name": "cameraAnim",
+            "duration": 6,
+            "frameRate": 30,
+            "loopMode": "repeat",
+            "interpolation": "spline",
+            "smoothness": 1,
+            "keyframes": {
+                "times": [
+                    0,
+                    60,
+                    132
+                ],
+                "values": {
+                    "position": [
+                        0.9237784147262573,
+                        0.3010503053665161,
+                        -1.9649118185043335,
+                        2.098865032196045,
+                        0.19113855063915253,
+                        0.0703955665230751,
+                        0.10095574706792831,
+                        0.4748413860797882,
+                        -1.8289657831192017
+                    ],
+                    "target": [
+                        0.004188989122906994,
+                        0.19316958325843958,
+                        -0.07997172178909095,
+                        0.004188989122906994,
+                        0.19316958325843958,
+                        -0.07997172178909095,
+                        0.004188989122906994,
+                        0.1931695832584396,
+                        -0.07997172178909095
+                    ],
+                    "fov": [
+                        75.00000000000003,
+                        75.00000000000003,
+                        75.00000000000004
+                    ]
+                }
+            }
+        }
+    ],
+    "cameras": [
+        {
+            "initial": {
+                "position": [
+                    1.702568769454956,
+                    0.21598990261554718,
+                    -0.8129649758338928
+                ],
+                "target": [
+                    0.004188989122906994,
+                    0.19316958325843958,
+                    -0.07997172178909095
+                ],
+                "fov": 75
+            }
+        }
+    ],
+    "annotations": [],
+    "startMode": "animTrack"
+}
